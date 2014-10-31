@@ -10,9 +10,9 @@
  * TODO need testing of bounds fitting in the cases with 1 or no markers flagged
  */
 angular.module('myApp')
-    .controller('DashCtrl', ['$scope', 'apiService', 'leafletData', 'leafletEvents',
+    .controller('DashCtrl', ['$scope', 'apiService', 'leafletData', 'leafletEvents', '$timeout',
 
-        function($scope, apiService, leafletData, leafletEvents) {
+        function($scope, apiService, leafletData, leafletEvents, $timeout) {
             var hasMarkers = false,
                 cameraNames = [];
 
@@ -25,15 +25,19 @@ angular.module('myApp')
             });
 
             $scope.previewVideo = function(camName, vidId) {
+                $timeout(function() {
                 $scope.previewUrl = apiService.getVideoUrl(camName, vidId, 'mp4');
+                });
                 console.log('preview clicked');
-                $scope.$digest();
+                //$scope.$digest();
             };
 
 
             $scope.$watch('selectedCamera', function () {
+                $timeout(function() {
                 $scope.previewUrl = '';
-                $scope.$digest();
+                });
+                //$scope.$digest();
             });
 
             apiService.getAllCameras(function(data) {
