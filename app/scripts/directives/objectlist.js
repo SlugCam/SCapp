@@ -82,6 +82,7 @@ angular.module('myApp')
                         console.dir(e);
                     });
                     state = 'video';
+                    element.find('.scvp-alarm-layer').css('visibility', 'hidden');
                 });
             }
         };
