@@ -4,6 +4,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 @import "log";
 @import "activity-bar";
+@import "sc-video-player";
+
+.leaflet-container {
+  margin-top: 1.5em;
+}
 
 // Default table style
 table {
